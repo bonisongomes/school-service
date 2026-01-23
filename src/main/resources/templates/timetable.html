@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Class Timetable</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="header">
+    <h1 th:text="'Class ' + ${timetable.standard} + ' - ' + ${timetable.division}"></h1>
+</header>
+
+
+<section class="timetable-container">
+    <div th:each="day : ${timetable.weeklySchedule}" class="day-card">
+        <h3 th:text="${day.key}"></h3>
+        <div th:each="period : ${day.value}" class="period">
+            <strong th:text="${period.time}"></strong>
+            <span th:text="${period.subject}"></span>
+            <small th:text="'Teacher: ' + ${period.teacher}"></small>
+        </div>
+    </div>
+</section>
+
+
+<div class="back-link">
+    <a href="/">← Back to Home</a>
+</div>
+</body>
+</html>
