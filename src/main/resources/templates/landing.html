@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>St. Xavier's High School</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background: linear-gradient(135deg, #eef2f7, #f9fbfd);
+            color: #2d3436;
+        }
+
+        .hero {
+            height: 260px;
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+                        url('/images/school-banner.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            margin-top: 10px;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .navbar button {
+            border: none;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            color: white;
+            padding: 10px 26px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s ease;
+        }
+
+        .navbar button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #1d2671;
+        }
+
+        .highlight-img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 18px;
+            background: #1d2671;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HERO SECTION -->
+<div class="hero">
+    <div>
+        <h1>St. Xavier's High School</h1>
+        <p>Mumbai | Excellence Since 1985</p>
+    </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <button onclick="window.location.href='/school_home'">Home</button>
+    <button onclick="window.location.href='/timetable'">Timetable</button>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="content">
+
+    <div class="card">
+        <h2>Welcome</h2>
+        <p>
+            St. Xavier's High School is committed to nurturing young minds through
+            academic excellence, discipline, creativity, and holistic development.
+        </p>
+
+        <img src="/images/students.jpg" class="highlight-img">
+    </div>
+
+    <div>
+
+        <div class="card">
+            <h2>Vision & Mission</h2>
+            <p>
+                To inspire students to achieve their fullest potential with integrity,
+                knowledge, and compassion.
+            </p>
+            <img src="/images/vision.jpg" class="highlight-img">
+        </div>
+
+        <div class="card" style="margin-top:20px;">
+            <h2>Latest News</h2>
+            <p>• Annual Science Fair Next Week</p>
+            <p>• Sports Day Highlights</p>
+            <p>• Admissions Open for 2026</p>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    © 2026 St. Xavier's High School. All Rights Reserved.
+</footer>
+
+</body>
+</html>

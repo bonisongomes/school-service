@@ -1,94 +1,90 @@
-body {
-margin: 0;
-font-family: 'Segoe UI', sans-serif;
-background: #f4f6f9;
+         body {
+             font-family: Arial, sans-serif;
+             background: #f4f6f8;
+             margin: 0;
+             padding: 0;
+         }
+
+         .container {
+             width: 80%;
+             margin: 30px auto;
+             background: #fff;
+             padding: 20px;
+             border-radius: 6px;
+             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         }
+
+         h1 {
+             text-align: center;
+             margin-bottom: 20px;
+         }
+
+         .form-section {
+             display: flex;
+             justify-content: center;
+             gap: 15px;
+             margin-bottom: 20px;
+         }
+
+         .form-section label {
+             font-weight: bold;
+         }
+
+         .form-section input {
+             padding: 6px;
+             margin-left: 5px;
+         }
+
+         button {
+             padding: 8px 15px;
+             cursor: pointer;
+             background: #007bff;
+             color: white;
+             border: none;
+             border-radius: 4px;
+         }
+
+         button:hover {
+             background: #0056b3;
+         }
+
+         table {
+             width: 100%;
+             border-collapse: collapse;
+         }
+
+         thead {
+             background: #007bff;
+             color: white;
+         }
+
+         th, td {
+             padding: 10px;
+             border: 1px solid #ddd;
+             text-align: center;
+         }
+
+         tbody tr:nth-child(even) {
+             background: #f2f2f2;
+         }
+.subnav {
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-
-.header {
-background: linear-gradient(135deg, #1e3c72, #2a5298);
-color: white;
-padding: 30px;
-text-align: center;
+.subnav button {
+    margin: 5px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #1d2671;
+    color: white;
+    cursor: pointer;
 }
 
-
-.navbar {
-display: flex;
-justify-content: center;
-background: #ffffff;
-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-
-.navbar a {
-padding: 15px 25px;
-text-decoration: none;
-color: #2a5298;
-font-weight: bold;
-}
-
-
-.about, .form-section {
-padding: 40px;
-max-width: 900px;
-margin: auto;
-}
-
-
-.form-box {
-display: flex;
-gap: 20px;
-}
-
-
-.form-box select, .form-box button {
-padding: 12px;
-font-size: 16px;
-}
-
-
-.form-box button {
-background: #2a5298;
-color: white;
-border: none;
-cursor: pointer;
-}
-
-
-.timetable-container {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 20px;
-padding: 40px;
-}
-
-
-.day-card {
-background: white;
-border-radius: 12px;
-padding: 20px;
-box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-
-.period {
-margin-top: 10px;
-padding: 10px;
-border-left: 4px solid #2a5298;
-background: #f8f9fc;
-}
-
-
-.footer {
-text-align: center;
-padding: 20px;
-background: #1e3c72;
-color: white;
-}
-
-
-.back-link {
-text-align: center;
-margin-bottom: 30px;
+.section input {
+    display: block;
+    margin: 8px auto;
+    padding: 8px;
+    width: 220px;
 }

@@ -1,29 +1,204 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>Class Timetable</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta charset="UTF-8">
+    <title>School Timetable</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #eef2f7, #f8fafc);
+        }
+
+        .topbar {
+            background: #1e3a5f;
+            color: white;
+            padding: 14px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .topbar h2 {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .topbar .nav-buttons button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 15px;
+            margin-left: 20px;
+            cursor: pointer;
+            opacity: 0.9;
+        }
+
+        .topbar .nav-buttons button:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .page-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #1e3a5f;
+            font-weight: 500;
+        }
+
+        .subnav {
+            margin-bottom: 20px;
+        }
+
+        .subnav button {
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            margin-right: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .subnav button:hover {
+            background: #2c5282;
+        }
+
+        input {
+            padding: 8px 10px;
+            margin: 6px 4px;
+            border-radius: 5px;
+            border: 1px solid #d0d7e2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th {
+            background: #1e3a5f;
+            color: white;
+            padding: 10px;
+            font-weight: 500;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid #e5e9f0;
+            text-align: center;
+        }
+
+        .section h3 {
+            margin-top: 0;
+            color: #1e3a5f;
+        }
+    </style>
 </head>
 <body>
-<header class="header">
-    <h1 th:text="'Class ' + ${timetable.standard} + ' - ' + ${timetable.division}"></h1>
-</header>
 
-
-<section class="timetable-container">
-    <div th:each="day : ${timetable.weeklySchedule}" class="day-card">
-        <h3 th:text="${day.key}"></h3>
-        <div th:each="period : ${day.value}" class="period">
-            <strong th:text="${period.time}"></strong>
-            <span th:text="${period.subject}"></span>
-            <small th:text="'Teacher: ' + ${period.teacher}"></small>
-        </div>
+<div class="topbar">
+    <h2>St. Xavier's High School</h2>
+    <div class="nav-buttons">
+        <!-- Redirect back to landing/home page -->
+        <button onclick="window.location.href='/school_home'">Home</button>
+        <button>Timetable</button>
     </div>
-</section>
-
-
-<div class="back-link">
-    <a href="/">← Back to Home</a>
 </div>
+
+<div class="container">
+    <div class="page-card">
+
+        <h1>School Timetable</h1>
+
+        <div class="subnav">
+            <button onclick="showSection('display')">Display Timetable</button>
+            <button onclick="showSection('assign')">Assign Timetable</button>
+            <button onclick="showSection('swap')">Swap Timetable</button>
+        </div>
+
+        <!-- DISPLAY -->
+        <div id="display" class="section">
+            <h3>Display Timetable</h3>
+
+            <input type="text" id="standard" placeholder="Standard">
+            <input type="text" id="division" placeholder="Division">
+            <button onclick="fetchTimetable()">Load</button>
+
+            <table id="timetable">
+                <thead>
+                <tr>
+                    <th>Period</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- ASSIGN -->
+        <div id="assign" class="section" style="display:none">
+            <h3>Assign Teacher</h3>
+
+            <input id="a_standard" placeholder="Standard">
+            <input id="a_division" placeholder="Division">
+            <input id="a_day" placeholder="Day">
+            <input id="a_period" placeholder="Period No">
+            <input id="a_subject" placeholder="Subject">
+            <input id="a_teacher" placeholder="Teacher">
+
+            <button onclick="assignTeacher()">Assign</button>
+        </div>
+
+        <!-- SWAP -->
+        <div id="swap" class="section" style="display:none">
+            <h3>Swap Teachers</h3>
+
+            <input id="s_standard" placeholder="Standard">
+            <input id="s_division" placeholder="Division">
+
+            <input id="s_day1" placeholder="Day 1">
+            <input id="s_period1" placeholder="Period 1">
+
+            <input id="s_day2" placeholder="Day 2">
+            <input id="s_period2" placeholder="Period 2">
+
+            <button onclick="swapTeachers()">Swap</button>
+        </div>
+
+    </div>
+</div>
+
+<script src="/js/timetable.js"></script>
+
+<script>
+    function showSection(id) {
+        document.querySelectorAll(".section").forEach(s => s.style.display = "none");
+        document.getElementById(id).style.display = "block";
+    }
+</script>
+
 </body>
 </html>
