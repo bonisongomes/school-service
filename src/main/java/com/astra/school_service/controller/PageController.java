@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PageController {
-
+    @GetMapping("/")
+    public String root() {
+        return "redirect:/school_home";
+    }
     @GetMapping("/school_home")
     public String schoolPage() {
         return "landing";
