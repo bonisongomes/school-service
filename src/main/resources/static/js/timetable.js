@@ -9,7 +9,7 @@ function fetchTimetable() {
         return;
     }
 
-    const url = `http://localhost:8080/api/timetable?standard=${standard}&division=${division}`;
+    const url = `/api/timetable?standard=${standard}&division=${division}`;
 
     fetch(url)
         .then(response => {
@@ -88,7 +88,7 @@ function assignTeacher() {
         teacher: document.getElementById("a_teacher").value
     };
 
-    fetch("http://localhost:8080/api/timetable/assign", {
+    fetch("/api/timetable/assign", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(req)
@@ -121,16 +121,25 @@ function swapTeachers() {
         periodNo2: parseInt(document.getElementById("s_period2").value)
     };
 
-    fetch("http://localhost:8080/api/timetable/swap", {
+    fetch("/api/timetable/swap", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(req)
     })
-    .then(r => r.json())
-    .then(data => {
-        alert("Swap Successful");
-        renderTable(data);
-    })
-    .catch(err => alert(err));
+    .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Swap Failed");
+            }
+
+            return response.json();
+        })
+        .then(data => {
+            alert("Swapping Successful");
+        })
+        .catch(err => {
+            alert(err.message);
+            console.error("Swap error:", err);
+        });
 }
 
